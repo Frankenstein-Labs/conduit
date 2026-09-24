@@ -132,7 +132,7 @@ final class ConduitCarPlaySceneDelegate: UIResponder,
       ),
       makeState(
         identifier: VoiceState.ready,
-        titleVariants: ["Ask Conduit", "Conduit"],
+        titleVariants: ["Ask Cortex AI", "Cortex AI"],
         systemImageName: "waveform",
         repeats: true,
         actionButtons: [makeStartButton()]
