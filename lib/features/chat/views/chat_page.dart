@@ -4383,6 +4383,17 @@ class _ChatPageState extends ConsumerState<ChatPage> {
       hasMessages: hasMessages,
       showNewChatAction: showNewChatAction,
     );
+    actionDescriptors.insert(
+      0,
+      _buildChatModeToolbarAction(
+        context: context,
+        isAgentMode:
+            (selectedModel != null && isHermesModel(selectedModel)) ||
+            isNativeHermesConversation(activeConversation),
+        hasMessages: hasMessages,
+        tintColor: tintColor,
+      ),
+    );
     final actionWidgets = buildConduitAdaptiveToolbarActionWidgets([
       for (final action in actionDescriptors) action.widget,
     ]);
@@ -4413,6 +4424,89 @@ class _ChatPageState extends ConsumerState<ChatPage> {
       cupertinoTrailing: cupertinoTrailing,
       centerTitle: false,
     );
+  }
+
+  _ChatToolbarActionDescriptor _buildChatModeToolbarAction({
+    required BuildContext context,
+    required bool isAgentMode,
+    required bool hasMessages,
+    required Color tintColor,
+  }) {
+    final iosSymbol = isAgentMode
+        ? 'wand.and.stars'
+        : 'bubble.left.and.bubble.right';
+    final onPressed = () => _showChatModeSelector(
+      context,
+      hasMessages: hasMessages,
+    );
+    return _ChatToolbarActionDescriptor(
+      widget: ConduitAdaptiveAppBarIconButton(
+        key: const ValueKey('chat-mode-toggle'),
+        icon: isAgentMode ? Icons.smart_toy_outlined : Icons.forum_outlined,
+        iosSymbol: iosSymbol,
+        iconColor: isAgentMode ? Colors.blue : tintColor,
+        onPressed: onPressed,
+      ),
+      nativeAction: ConduitNativeToolbarAction(
+        iosSymbol: iosSymbol,
+        accessibilityLabel: isAgentMode ? 'Agent mode' : 'Discussion mode',
+        tintColor: isAgentMode ? Colors.blue : tintColor,
+        enabled: true,
+        onPressed: onPressed,
+      ),
+    );
+  }
+
+  Future<void> _showChatModeSelector(
+    BuildContext context, {
+    required bool hasMessages,
+  }) async {
+    final hermesAvailable = ref.read(hermesConfigProvider).isUsable;
+    final selectedMode = await showModalBottomSheet<String>(
+      context: context,
+      showDragHandle: true,
+      builder: (sheetContext) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.forum_outlined),
+              title: const Text('Discussion'),
+              subtitle: const Text('Chat normally with the selected model'),
+              onTap: () => Navigator.of(sheetContext).pop('discussion'),
+            ),
+            ListTile(
+              enabled: hermesAvailable,
+              leading: const Icon(Icons.smart_toy_outlined),
+              title: const Text('Agent'),
+              subtitle: Text(
+                hermesAvailable
+                    ? 'Use your configured agent with tools and approvals'
+                    : 'Configure Hermes Agent before using Agent mode',
+              ),
+              onTap: hermesAvailable
+                  ? () => Navigator.of(sheetContext).pop('agent')
+                  : null,
+            ),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ),
+    );
+    if (!mounted || selectedMode == null) return;
+    if (hasMessages) {
+      AdaptiveSnackBar.show(
+        context,
+        message: 'Start a new chat to change mode.',
+        type: AdaptiveSnackBarType.info,
+      );
+      return;
+    }
+    if (selectedMode == 'agent') {
+      await startNewHermesChat(ref);
+    } else {
+      startNewChat(ref);
+    }
   }
 
   Widget _buildChatToolbarTitle({
