@@ -1,9 +1,9 @@
-<h1 align="center">Conduit</h1>
+<h1 align="center">CORTEX AI</h1>
 
 <p align="center">
   <img
     src="assets/icons/icon.png"
-    alt="Conduit icon"
+    alt="CORTEX AI icon"
     width="96"
     height="96"
   />
@@ -14,13 +14,17 @@
 </p>
 
 <p align="center">
+  Created by <strong>Abdoulaye Coumbassa</strong>.
+</p>
+
+<p align="center">
   <img
     alt="Latest Release"
-    src="https://img.shields.io/github/v/release/cogwheel0/conduit?display_name=tag&color=0A84FF"
+    src="https://img.shields.io/github/v/release/Frankenstein-Labs/conduit?display_name=tag&color=0A84FF"
   />
   <img
     alt="GitHub all downloads"
-    src="https://img.shields.io/github/downloads/cogwheel0/conduit/total?style=flat-square&label=Downloads&logo=github&color=111827"
+    src="https://img.shields.io/github/downloads/Frankenstein-Labs/conduit/total?style=flat-square&label=Downloads&logo=github&color=111827"
   />
   <img
     alt="License: GPL-3.0"
@@ -65,7 +69,7 @@
   >
     <img
       src="https://trendshift.io/api/badge/trendshift/repositories/15397/daily?language=Dart"
-      alt="cogwheel0/conduit: #1 Dart repository of the day on Trendshift"
+      alt="Frankenstein-Labs/conduit: #1 Dart repository of the day on Trendshift"
       width="200"
       height="44"
       align="middle"
@@ -87,7 +91,7 @@
 <p align="center">
   <img
     src="https://github.com/user-attachments/assets/8531f859-a2c4-4e61-877e-9885d1413f4e"
-    alt="Conduit demo"
+    alt="CORTEX AI demo"
     width="360"
   />
 </p>
@@ -97,7 +101,7 @@
 Open WebUI is excellent on the desktop. On mobile it breaks down at the edges:
 authentication behind a reverse proxy, streaming that drops when the app
 backgrounds, getting a screenshot into a prompt, starting a chat from the home
-screen. Conduit is a real Flutter app built to close that gap, and as of 4.0 it
+screen. CORTEX AI is a real Flutter app built to close that gap, and as of 4.0 it
 works with or without an Open WebUI server at all.
 
 Your chats live on your device first. Nothing routes through a backend the
@@ -105,7 +109,7 @@ maintainer operates.
 
 ## Ways to connect
 
-On first launch Conduit asks how you want to connect. Pick one, add the others
+On first launch CORTEX AI asks how you want to connect. Pick one, add the others
 later, and skip any sign-in you don't need.
 
 | | | |
@@ -138,14 +142,30 @@ not enabled.
 
 **Hermes Agent** connects to your own Hermes server. You watch its tools work
 live, approve sensitive steps before they run, and let scheduled agents run
-while you sleep. Conversations and schedules get their own tab, and Conduit only
+while you sleep. Conversations and schedules get their own tab, and CORTEX AI only
 exposes the capabilities your server actually reports.
+
+### Discussion and Agent modes
+
+CORTEX AI now makes the conversation style explicit. **Discussion mode** is the
+focused chat experience: choose a model and exchange messages through the
+configured Open WebUI, Direct, OpenRouter, or local provider connection.
+
+**Agent mode** is designed for delegated work. It uses the configured Hermes
+agent, can work with approved tools, pauses before sensitive actions, and supports
+long-running or scheduled tasks when the connected agent server provides them.
+The mode selector is available from the chat toolbar, and switching modes starts
+a clean conversation so that model and transport state never become mixed.
+
+The architecture keeps the model provider configurable, so CORTEX AI can later
+connect to Abdoulaye Coumbassa's own AI service without embedding credentials in
+the mobile application.
 
 ## Screenshots
 
 | Chat | Connect | Chats | Voice |
 | --- | --- | --- | --- |
-| <img src="docs/screenshots/1.png" alt="Multimodal chat with an image attachment and streaming response" width="200" /> | <img src="docs/screenshots/2.png" alt="Choose a Conduit chat backend" width="200" /> | <img src="docs/screenshots/3.png" alt="Chat with rich replies and Ask Conduit input" width="200" /> | <img src="docs/screenshots/4.png" alt="Voice call mode listening with call controls" width="200" /> |
+| <img src="docs/screenshots/1.png" alt="Multimodal chat with an image attachment and streaming response" width="200" /> | <img src="docs/screenshots/2.png" alt="Choose a CORTEX AI chat backend" width="200" /> | <img src="docs/screenshots/3.png" alt="Chat with rich replies and Ask CORTEX AI input" width="200" /> | <img src="docs/screenshots/4.png" alt="Voice call mode listening with call controls" width="200" /> |
 
 ## What you get
 
@@ -202,7 +222,7 @@ that.
 - **Custom headers during setup** for environments that require `X-API-Key`,
   `Authorization`, or organization routing headers.
 - **Credentials in Keychain or Keystore**, never plain-text local storage.
-- **Tracks upstream**: Conduit supports Open WebUI 0.11.
+- **Tracks upstream**: CORTEX AI supports Open WebUI 0.11.
 
 ## Getting started
 
@@ -213,7 +233,7 @@ then pick how you want to connect.
 <details open>
 <summary><strong>Open WebUI</strong></summary>
 
-1. Launch Conduit and choose Open WebUI.
+1. Launch CORTEX AI and choose Open WebUI.
 2. Enter your instance's base URL.
 3. Add any required custom headers.
 4. Sign in with username and password, LDAP, JWT, SSO, or proxy auth.
@@ -224,7 +244,7 @@ then pick how you want to connect.
 <details>
 <summary><strong>Direct connection</strong></summary>
 
-1. Launch Conduit and choose Direct connection.
+1. Launch CORTEX AI and choose Direct connection.
 2. Add an OpenAI-compatible or Ollama profile with its base URL and any API key
    or custom headers.
 3. Test the connection, enable it, and select a discovered or manually entered
@@ -238,8 +258,8 @@ then pick how you want to connect.
 <details>
 <summary><strong>Apple On-Device</strong></summary>
 
-1. On an eligible iOS 26 device, launch Conduit and choose Apple On-Device.
-2. Conduit checks Apple Intelligence and local-model availability. No API key
+1. On an eligible iOS 26 device, launch CORTEX AI and choose Apple On-Device.
+2. CORTEX AI checks Apple Intelligence and local-model availability. No API key
    or network connection is required.
 3. Start chatting. New Apple-only installations keep Direct history on the
    device unless you later enable Open WebUI history.
@@ -249,9 +269,9 @@ then pick how you want to connect.
 <details>
 <summary><strong>Apple Private Cloud Compute</strong></summary>
 
-1. On an eligible iOS 27 device, launch Conduit and choose Apple Private Cloud
+1. On an eligible iOS 27 device, launch CORTEX AI and choose Apple Private Cloud
    Compute.
-2. Conduit checks Apple Intelligence and PCC availability. No API key is
+2. CORTEX AI checks Apple Intelligence and PCC availability. No API key is
    required.
 3. Start chatting. New PCC-only installations keep Direct history on the
    device unless you later enable Open WebUI history.
@@ -261,7 +281,7 @@ then pick how you want to connect.
 <details>
 <summary><strong>Hermes Agent</strong></summary>
 
-1. Launch Conduit and choose Hermes Agent.
+1. Launch CORTEX AI and choose Hermes Agent.
 2. Enter your Hermes server URL and `API_SERVER_KEY`.
 3. Optionally set a memory key to scope the agent's long-term memory to you. One
    is generated automatically on first chat if you leave it blank.
@@ -290,7 +310,7 @@ See **[docs/BUILDING.md](docs/BUILDING.md)** for requirements, submodules,
 codegen, verification, project layout, and troubleshooting.
 
 ```bash
-git clone --recursive https://github.com/cogwheel0/conduit.git
+git clone --recursive https://github.com/Frankenstein-Labs/conduit.git
 cd conduit
 flutter pub get
 dart run build_runner build
@@ -302,14 +322,20 @@ and generated Dart files are git-ignored.
 
 ## Contributing
 
-Conduit is actively developed and feedback is welcome.
+CORTEX AI is actively developed and feedback is welcome.
 
-- Bugs → [GitHub Issues](https://github.com/cogwheel0/conduit/issues)
+- Bugs → [GitHub Issues](https://github.com/Frankenstein-Labs/conduit/issues)
 - Features, deployment notes, questions →
-  [GitHub Discussions](https://github.com/cogwheel0/conduit/discussions)
+  [GitHub Discussions](https://github.com/Frankenstein-Labs/conduit/discussions)
 
 Unsolicited pull requests are not the primary contribution path right now. Open
 an issue or discussion first so changes line up with the roadmap.
+
+## CORTEX AI and its creator
+
+CORTEX AI is an independent product created by **Abdoulaye Coumbassa**. It is
+designed to give individuals, teams, and organizations a private mobile gateway
+to the AI systems they choose to operate or connect.
 
 ## Enterprise and white-label
 
@@ -319,9 +345,9 @@ enterprise/white-label build, open a discussion or reach the maintainer at
 
 ## Support
 
-If Conduit is useful to you, you can support development through
-[GitHub Sponsors](https://github.com/sponsors/cogwheel0) or
-[Buy Me a Coffee](https://www.buymeacoffee.com/cogwheel0).
+For feedback, collaboration, and product support, use the project's
+[GitHub Issues](https://github.com/Frankenstein-Labs/conduit/issues) and
+[GitHub Discussions](https://github.com/Frankenstein-Labs/conduit/discussions).
 
 ## Acknowledgements
 
@@ -346,4 +372,4 @@ If Conduit is useful to you, you can support development through
 
 Released under the [GPL-3.0 License](LICENSE).
 
-Conduit is an independent client and is not affiliated with Open WebUI.
+CORTEX AI is an independent client and is not affiliated with Open WebUI.
