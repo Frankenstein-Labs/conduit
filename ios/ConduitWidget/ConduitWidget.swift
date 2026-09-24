@@ -70,7 +70,7 @@ struct ConduitWidgetEntryView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            // Main "Ask Conduit" pill - ChatGPT style
+            // Main "Ask Cortex AI" pill - ChatGPT style
             Link(destination: WidgetDeepLink.url(for: "new_chat")) {
                 HStack(spacing: 12) {
                     Image("HubIcon")
@@ -79,7 +79,7 @@ struct ConduitWidgetEntryView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 28, height: 28)
                         .foregroundStyle(contentColor.opacity(0.85))
-                    Text("Ask Conduit")
+                    Text("Ask Cortex AI")
                         .font(.system(size: 18, weight: .medium, design: .rounded))
                         .foregroundStyle(contentColor.opacity(0.85))
                     Spacer()

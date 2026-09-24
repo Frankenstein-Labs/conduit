@@ -10,7 +10,7 @@
     android:background="@drawable/widget_background"
     android:clipToOutline="true">
 
-    <!-- Main "Ask Conduit" Pill -->
+    <!-- Main "Ask Cortex AI" Pill -->
     <LinearLayout
         android:id="@+id/btn_new_chat"
         android:layout_width="match_parent"

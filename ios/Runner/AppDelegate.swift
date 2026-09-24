@@ -2042,7 +2042,7 @@ enum AppIntentError: Error {
 
 @available(iOS 16.0, *)
 struct AskConduitIntent: AppIntent {
-    static var title: LocalizedStringResource = "Ask Conduit"
+    static var title: LocalizedStringResource = "Ask Cortex AI"
     static var description = IntentDescription(
         "Start a Conduit chat with an optional prompt."
     )
